@@ -6,30 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Steinbeck Daily</title>
     <link href="src/output.css" rel="stylesheet">
+    <link href="src/styles.css" rel="stylesheet">
+    <link rel="icon" href="static/quotation-mark.svg" type="image/svg+xml">
 </head>
-<body class="bg-gray-500 text-gray-800">
+<body class="bg-gray-50 text-gray-800 m-0 p-0 h-screen relative">
 
-    <div class="container mx-auto p-8">
-        <header class="text-center mb-6">
-            <h1 class="text-4xl font-bold">Welcome to My Website</h1>
-            <p class="mt-2 text-lg">How many days since January 1, 2026?</p>
-        </header>
-        
-        <section class="text-center mb-6">
-            <div class="text-3xl font-bold" id="days-counter">Loading...</div>
+    <div class="svg-container">
+        <svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 800 800" width="100%" height="100%">
+            <!-- Generator: Adobe Illustrator 30.1.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 136)  -->
+            <path d="M592.09,335.67c9.76-61.35,86.45-126.89,146.41-128.28,4.18,0,9.38.1,12.17-2.69,2.74-3.04,3.78-4.68,5.96-8.47,20.92-39.04,9.76-69.72-25.1-94.82-40.44-29.28-104.58,0-136.65,26.49-80.87,66.93-153.89,185.03-163.18,292.75-7.21,74.59-6.93,153.45,13.98,218.98,13.94,41.83,54.38,62.75,96.21,65.54,41.83,2.79,128.28,15.34,165.93-9.76,37.65-25.1,39.81-74.24,44.62-115.73,4.18-46.01,16.73-132.47-22.31-168.72-39.04-34.86-151.99,2.79-138.04-75.3Z" fill="#f4f4f4"/>
+            <path d="M182.96,335.67c9.76-61.35,86.45-126.89,146.41-128.28,4.18,0,9.38.1,12.17-2.69,2.74-3.04,3.78-4.68,5.96-8.47,20.92-39.04,9.76-69.72-25.1-94.82-40.44-29.28-104.58,0-136.65,26.49C104.88,194.84,31.86,312.94,22.57,420.66c-7.21,74.59-6.93,153.45,13.98,218.98,13.94,41.83,54.38,62.75,96.21,65.54,41.83,2.79,128.28,15.34,165.93-9.76,37.65-25.1,39.81-74.24,44.62-115.73,4.18-46.01,16.73-132.47-22.31-168.72-39.04-34.86-151.99,2.79-138.04-75.3Z" fill="#f4f4f4"/>
+          </svg>
+      </div>
+
+        <!-- Days Counter in the top-left corner -->
+        <div class="transition duration-500 delay-800 opacity-0 ease-in corner top-left font-bold text-base" id="days-counter">Day 1</div>
+
+        <!-- About link in the top-right corner -->
+        <a href="https://github.com/trominoes/steinbeck-daily" class="transition duration-500 delay-800 opacity-0 ease-in corner top-right font-bold text-base">
+            <p class="transition duration-200 ease-in-out hover:text-gray-500">About</p>
+        </a>
+
+        <!-- John Steinbeck in the bottom-left corner -->
+        <p class="transition duration-500 delay-800 opacity-0 ease-in corner bottom-left font-bold text-base">John Steinbeck</p>
+
+        <!-- Source in the bottom-right corner -->
+        <div id="source" class="transition duration-500 delay-800 opacity-0 ease-in corner bottom-right font-bold text-base">Loading...</div>
+
+        <!-- Centered quote -->
+        <section id="quote-box" class="quote text-center min-w-5/8 relative">
+            <hr id="hr-top" class="border-1 border-gray-800 transition duration-600 opacity-0 ease-in-out transform absolute top-1/2 left-0 w-full">
+            <p id="quote" class="text-lg/6 md:text-xl/8 lg:text-2xl/10 m-8 md:m-14 lg:m-18 [transition:opacity_2s,scale_0.25s] hover:scale-102 opacity-0 ease-in-out">Loading...</p>
+            <hr id="hr-bottom" class="border-1 border-gray-800 transition duration-600 opacity-0 ease-in-out transform absolute bottom-1/2 left-0 w-full">
         </section>
-
-        <section class="text-center mb-6">
-            <p class="text-lg">Random Quote:</p>
-            <div id="quote" class="italic text-xl">Loading...</div>
-        </section>
-
-        <footer class="text-center mt-8">
-            <a href="https://example1.com" class="text-blue-500 hover:underline mx-2">Link 1</a>
-            <a href="https://example2.com" class="text-blue-500 hover:underline mx-2">Link 2</a>
-            <a href="https://example3.com" class="text-blue-500 hover:underline mx-2">Link 3</a>
-        </footer>
-    </div>
+    
 
     <!-- Link to your JavaScript file -->
     <script src="./script.js"></script>

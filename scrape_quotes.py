@@ -37,12 +37,13 @@ def compile_quotes_on_page(n):
                 quote_text, aux_text = cleaned_quote.split('―John', 1)
                 # Checks that source is listed, quote is of suitable length, contains only alphabet
                 if 'Steinbeck,' in aux_text:
+                    quote_text = clean_quote(quote_text.strip())
                     if len(quote_text) <= CHAR_MAX and len(quote_text) >= CHAR_MIN:
                         if ENGLISH_PATTERN.match(quote_text):
                             # Correct capitalizations for quote and source
                             book_name = aux_text.split(',')[1].strip()
                             book_name = title_case(book_name, EXCEPTIONS)
-                            quotes_and_sources.append((capitalize_quote(quote_text).strip(), book_name))
+                            quotes_and_sources.append((quote_text, book_name))
 
         return quotes_and_sources
     else:
@@ -98,10 +99,15 @@ def save_to_json(quotes_and_sources, filename):
             indent=2
         )
 
-def capitalize_quote(s):
-    '''Capitalizes a quote (second char, to skip the quotation mark)'''
-    new_string = s[0] + s[1].upper() + s[2:]
-    return new_string
+def clean_quote(s):
+    '''Cleans a quote (capitalization, stripping, punctuation check)'''
+    
+    s = s[0] + s[1:-1].strip() + s[-1]
+    s = s[0] + s[1].upper() + s[2:]
+    if re.match(r'[.?!]', s[-2]):
+        return s
+    else: 
+        return ''
 
 def title_case(s, exceptions):
     '''Converts a string to title case, except for specified exceptions.'''
@@ -148,4 +154,3 @@ save_to_json(accept_quotes_with_sources(quotes_and_sources, accepted_books), "al
 
 with open(f"static/book_titles.json", "w", encoding="utf-8") as f:
     json.dump(accepted_books, f)
-

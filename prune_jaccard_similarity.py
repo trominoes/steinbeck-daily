@@ -1,5 +1,5 @@
 import json
-
+import random
 
 def jaccard_similarity(quote1, quote2):
     '''Uses Jaccard similarity to compare quote1 and quote2 text'''
@@ -59,6 +59,8 @@ with open(f"static/all_quotes.json", "r", encoding="utf-8") as f:
 
     print(f"Number of quotes before deduplication: {len(quotes_data)}")
     print(f"Number of quotes after deduplication: {len(filtered_quotes)}")
+
+    random.shuffle(filtered_quotes)
 
 with open(f"static/all_quotes_filtered.json", "w", encoding="utf-8") as f:
         json.dump(
